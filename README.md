@@ -3,6 +3,7 @@
 ![alt text](.funny/Calvin_with_the_glue_final.png) 
 ###### Or: A Hardware Engineer's Guide to Learning Large Language Models
 
+
 ## Introduction
 This document details the process of developing a web-UI interface for interacting with a locally hosted LLM (gemma:2b). Provided below are the background, challenges and salient design decisions that accompanied the development process. Those interested in seeing a demonstration of the model can skip to the bottom, where a pair of links to videos are provided - the first has been edited to remove the long pauses where the machine is "thinking", while the second remains in uncut form to demonstrate the integrity of the model. All work completed for this project was done soley by myself (Cayton Larmer), made possible by extensive consultation of StackOverflow.
 
@@ -40,14 +41,15 @@ One challenge with developing the Source and RagDB classes which I remain dissat
 Having built and tested each class in the Bot module, it was time to tie everything together with the frontend. Streamlit offers a fantastic set of tools for building simply webUIs quickly and without worrying about the minutae of server hosting, and the stateless architecture actually made the programming feel coarsely familiar to working with a microcontroller. The main REPL structure is handled in the run() function, which in turn uses helper methods to parse the user input and write the running chat history to the screen. This division of labor between the read, evaluate and print functionality allowed for very swift development and progressive testing of the main script.
 
 An ongoing issue I have with this script is how input is parsed, especially when changing modes. This single function - ParseInput - seems to be doing far too much, and the unintuitive return values belie this. Were I to re-write this, I would almost certainly refactor the function to return the state information (e.g. whether or not to quit the repl) and the 'notification' message via separate channels. It would also be wise to expand the WriteHistory method to be responsible for all updates to the web interface in each loop, rather than just printing the current chat history.
-
+.
 ## Closing Thoughts
 All taken together, I am happy with how this project turned out. I have been unable to find any bugs in my testing of the completed product, and from a software design standpoint my only regrets are abstract implementation details. While I am confident I could complete the 'extra credit' portion of the project (the highly modular structure of the Bot classes was in fact taking this into account), the slow performance of the model on my machine and extended timeframe of the project have convinced me to submit what I have and be happy with it.
 
 This project, taking place in approx. 25 working hours over the course of 7 days, was one of many 'first's for me - first time working with a large language model, first time working with a web UI, et cetera. Back when I was first starting my degree in engineering, I had the opportunity to attend a speaker session with one of the Mechatronics team's alumni. Their keystone piece of advice for the next generation was that past a certain point, the prefix in front of the word 'engineer' on your diploma meant less than the word 'engineer' itself. Regardless of the context or discipline, the principal function of an engineer is to learn hard things quickly. I hope this project stands as a testament to my ability to do just that. 
 
 ## Model Demonstration
-Link:
-Link (UNCUT):
+Link: [Cayton Larmer JSB AI Demo Video](https://drive.google.com/file/d/1he34J4OXKMwFqO9vC4-4BwAyUc2_C63H/view?usp=drive_link)
+
+Link (UNCUT): [Cayton Larmer JSB AI Video Demo RAW](https://drive.google.com/file/d/1lDggN6u0OQzZyxzQtmOkS8oNXwddGs_Q/view?usp=drive_link)
 
 Please find me at clarmer8530@sdsu.edu with questions. 
