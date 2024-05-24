@@ -122,6 +122,10 @@ if __name__ == "__main__" :
     Startup()
 
     # This function handles all of the logic associated with regular
-    # program operation
-    if run(st.session_state['chat_manager']) == -1:
+    # program operation. 
+    curr_state = run(st.session_state['chat_manager'])
+
+    # If the current state is updated to -1, it means the user input has 
+    # entered the !quit command and program execution should stop.
+    if curr_state == -1:
         st.stop()

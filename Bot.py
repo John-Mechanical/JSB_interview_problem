@@ -288,6 +288,11 @@ class ChatManager:
         # one for the url (if applicable)
         mode : [str]
 
+        # Start by setting the current Source to None - this is to ensure that the finalizer
+        # is called for any existing Source objects. If this doesn't happend, successive calls to
+        # !rag can cause an exception
+        self.__source = None
+
         # Given a valid mode, update the BotManager object to have a source corresponding
         # to that mode
 
